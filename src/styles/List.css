@@ -1,0 +1,21 @@
+
+.buttonTd{
+    width: 150px;
+}
+
+.tableClass th{
+    font-weight: bold;
+}
+
+
+@media (prefers-color-scheme: dark){
+    .tableClass{
+        width: 100%;
+        color:red;
+    }
+    .tableClass th{
+        color: rgba(255, 255, 255, 0.87);
+        font-weight: bold;
+    }
+  }
+
