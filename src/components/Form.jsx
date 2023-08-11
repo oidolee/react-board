@@ -90,10 +90,10 @@ function Form(){
                             dispatch(action)
                         }}
                     >
-                        <p><input type="text" name="title" id="title" value={changeSetTitle} placeholder="title 입력하시오" onChange={(e)=>{
+                        <p><input type="text" name="title" id="title" value={changeSetTitle} placeholder="제목을 입력해주세요." onChange={(e)=>{
                             setChangeTitle(e.target.value)
                         }}/></p>
-                        <p><textarea name="body" id="body" cols="30" rows="10" value={changeSetBody} placeholder="body를 입력하시오" onChange={(e)=>{
+                        <p><textarea name="body" id="body" cols="30" rows="10" value={changeSetBody} placeholder="내용을 입력해주세요" onChange={(e)=>{
                             setChangeSetBody(e.target.value)
                         }}></textarea></p>
                         <p>
