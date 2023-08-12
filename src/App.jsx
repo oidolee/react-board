@@ -14,10 +14,13 @@ import './script/app';
 
 
 function App() {
-
+  const style = {
+    minWidth:'800px'
+  }
+  
   return (
     <>
-    <Container maxWidth="lg">
+    <Container style={style}>
       <Provider store={store}>
         <div className="header">
           <h2>리액트 게시판</h2>
