@@ -32,7 +32,7 @@ function Nav(){
     const setCheckedItem = useSelector((state) => state.setCheckedItem);
 
     function onCheck(e){
-        //체크 박스 클릭시 리덕스로 상태값 업데이트 후 isChecked 체크 여부 파악
+        //체크 박스 클릭시 리덕스로 상태값 업데이트 후 inhecked 체크 여부 파악
         let checkBox = e.target;
         //체크된 배열 추가
         if (checkBox.checked) {
@@ -106,7 +106,7 @@ function Nav(){
                 </TableCell>
                 <TableCell className="buttonTd">
                     <Button variant="outlined" startIcon={<ModeIcon />}
-                        onClick={()=>{
+                        onClick={(e)=>{
                             //업데이트 폼 보여줌
                             dispatch(
                                 {
@@ -140,7 +140,7 @@ function Nav(){
     })
     return(
         <div>
-            <Table size="small" class="tableClass" maxWidth="xl">
+            <Table size="small" className="tableClass">
                 <TableHead>
                     <TableRow>
                     <TableCell>

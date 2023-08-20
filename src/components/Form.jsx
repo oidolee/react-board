@@ -8,6 +8,7 @@ import DialogTitle from '@mui/material/DialogTitle';
 import DialogContent from '@mui/material/DialogContent';
 import DialogActions from '@mui/material/DialogActions';
 
+import Box from '@mui/material/Box';
 function Form(){
     //Redux 상태값
     const setTitle = useSelector((state)=>state.setTitle);
@@ -61,52 +62,58 @@ function Form(){
         setOpen(false);
         dispatch(action)
     }
+    let diallogStyle = {
+        position:'absolute'
+        ,width:'100vw'
+        ,top:0
+        ,left:0
+    }
 
     return(
-        <div>
-            <Dialog  open={open}>
-            {/* <Dialog  open={false}> */}
-                <DialogTitle>게시글 작성</DialogTitle>
-                <DialogContent>
-                    <form id="createForm" action=""
-                        onSubmit={(e)=>{
-                            e.preventDefault();
-                            let typeMode = 'updateTopic';
-                            if (topic.length == 0) {
-                                setId = 1;
-                            }
-                            if (setId == undefined) {
-                                //생성시 state 배열의 id 마지막 값 갖고오기
-                                let lastId = topic[topic.length-1].id; 
-                                setId = (lastId + 1); 
-                            }
-                            if (mode == 'createForm') typeMode = 'createTopic';
-                            let action = {
-                                type: typeMode,
-                                id: setId,
-                                title: e.target.title.value,
-                                body: e.target.body.value
-                            }
-                            dispatch(action)
-                        }}
-                    >
-                        <p><input type="text" name="title" id="title" value={changeSetTitle} placeholder="제목을 입력해주세요." onChange={(e)=>{
-                            setChangeTitle(e.target.value)
-                        }}/></p>
-                        <p><textarea name="body" id="body" cols="30" rows="10" value={changeSetBody} placeholder="내용을 입력해주세요" onChange={(e)=>{
-                            setChangeSetBody(e.target.value)
-                        }}></textarea></p>
-                        <p>
-                            <DialogActions>
-                                <Button onClick={()=>{submitForm( (mode !='updateForm')? 'createForm':'' )}} variant="outlined">{mode == 'updateForm'? '업데이트':'생성'}</Button>
-                                <Button onClick={handleClose} variant="outlined">취소</Button>
-                            </DialogActions>
-                        </p>                
-                    </form>
-                </DialogContent>
+        <>
+            <Dialog  open={open} style={diallogStyle}>
+                <div className="dialogBox">
+                    <DialogTitle>게시글 작성</DialogTitle>
+                    <DialogContent>
+                        <form id="createForm" action=""
+                            onSubmit={(e)=>{
+                                e.preventDefault();
+                                let typeMode = 'updateTopic';
+                                if (topic.length == 0) {
+                                    setId = 1;
+                                }
+                                if (setId == undefined) {
+                                    //생성시 state 배열의 id 마지막 값 갖고오기
+                                    let lastId = topic[topic.length-1].id; 
+                                    setId = (lastId + 1); 
+                                }
+                                if (mode == 'createForm') typeMode = 'createTopic';
+                                let action = {
+                                    type: typeMode,
+                                    id: setId,
+                                    title: e.target.title.value,
+                                    body: e.target.body.value
+                                }
+                                dispatch(action)
+                            }}
+                        >
+                            <p><input type="text" name="title" id="title" value={changeSetTitle} placeholder="제목을 입력해주세요." onChange={(e)=>{
+                                setChangeTitle(e.target.value)
+                            }}/></p>
+                            <p><textarea name="body" id="body" cols="30" rows="10" value={changeSetBody} placeholder="내용을 입력해주세요" onChange={(e)=>{
+                                setChangeSetBody(e.target.value)
+                            }}></textarea></p>
+                            <p>
+                                <DialogActions>
+                                    <Button onClick={()=>{submitForm( (mode !='updateForm')? 'createForm':'' )}} variant="outlined">{mode == 'updateForm'? '업데이트':'생성'}</Button>
+                                    <Button onClick={handleClose} variant="outlined">취소</Button>
+                                </DialogActions>
+                            </p>                
+                        </form>
+                    </DialogContent>
+                </div>
             </Dialog>
-
-        </div>
+        </>
     )
 }
 
